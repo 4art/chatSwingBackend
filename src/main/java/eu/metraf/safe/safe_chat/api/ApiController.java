@@ -3,6 +3,8 @@ package eu.metraf.safe.safe_chat.api;
 import eu.metraf.safe.safe_chat.model.Health;
 import eu.metraf.safe.safe_chat.model.Message;
 import eu.metraf.safe.safe_chat.model.User;
+import eu.metraf.safe.safe_chat.repo.MessageRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -11,12 +13,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
 @RestController
 public class ApiController {
+
+  @Autowired
+  private MessageRepo messageRepo;
 
   @RequestMapping(value = "/", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
   public ResponseEntity<Health> checkHealth() {
@@ -27,19 +33,14 @@ public class ApiController {
 
   @RequestMapping(value = "/message", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
   public ResponseEntity<List<Message>> getMessages() {
-    Message message = new Message();
-    User user = new User();
-    message.setLocaltime(LocalDateTime.now());
-    message.setMessage("some message");
-    user.setColor("#000000");
-    user.setUsername("safe");
-    message.setUser(user);
-    return new ResponseEntity<>(Arrays.asList(message), HttpStatus.OK);
+    List<Message> messages = messageRepo.findAll();
+    return new ResponseEntity<>(messages, HttpStatus.OK);
   }
 
   @RequestMapping(value = "/message", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-  public ResponseEntity<Message> setMessage(@RequestBody Message message) {
-    return new ResponseEntity<>(message, HttpStatus.OK);
+  public ResponseEntity<Message> setMessage(@Valid @RequestBody Message message) {
+    Message savedMessage = messageRepo.save(message);
+    return new ResponseEntity<>(savedMessage, HttpStatus.OK);
   }
 
 }
