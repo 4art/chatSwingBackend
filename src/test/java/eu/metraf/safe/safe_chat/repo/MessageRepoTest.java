@@ -13,7 +13,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
+
 @SpringBootTest
 @RunWith(SpringRunner.class)
 public class MessageRepoTest {
@@ -22,7 +24,7 @@ public class MessageRepoTest {
   private Message message;
 
   @Before
-  public void createMessage(){
+  public void createMessage() {
     message = new Message();
     User user = new User();
     message.setLocaltime(LocalDateTime.now());
@@ -34,14 +36,14 @@ public class MessageRepoTest {
   }
 
   @Test
-  public void checkFindAll(){
+  public void checkFindAll() {
     List<Message> messages = messageRepo.findAll();
     assertNotNull(messages);
     assertNotEquals(messages.size(), 0);
   }
 
   @After
-  public void removeMessage(){
+  public void removeMessage() {
     messageRepo.delete(message);
   }
 
