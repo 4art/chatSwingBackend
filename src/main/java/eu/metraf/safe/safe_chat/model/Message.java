@@ -13,6 +13,15 @@ public class Message {
   private String message;
   private LocalDateTime localtime;
 
+  public Message() {
+  }
+
+  public Message(User user, String message, LocalDateTime localtime) {
+    this.user = user;
+    this.message = message;
+    this.localtime = localtime;
+  }
+
   public String getId() {
     return id;
   }

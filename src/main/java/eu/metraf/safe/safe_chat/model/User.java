@@ -10,6 +10,14 @@ public class User {
   private String username;
   private String color;
 
+  public User() {
+  }
+
+  public User(String username, String color) {
+    this.username = username;
+    this.color = color;
+  }
+
   public String getId() {
     return id;
   }
