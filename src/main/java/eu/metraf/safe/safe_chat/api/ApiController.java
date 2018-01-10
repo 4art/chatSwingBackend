@@ -2,7 +2,6 @@ package eu.metraf.safe.safe_chat.api;
 
 import eu.metraf.safe.safe_chat.model.Health;
 import eu.metraf.safe.safe_chat.model.Message;
-import eu.metraf.safe.safe_chat.model.User;
 import eu.metraf.safe.safe_chat.repo.MessageRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-import java.time.LocalDateTime;
-import java.util.Arrays;
 import java.util.List;
 
 @RestController
