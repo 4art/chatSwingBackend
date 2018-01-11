@@ -2,7 +2,6 @@ package eu.metraf.safe.safe_chat.repo;
 
 import eu.metraf.safe.safe_chat.model.Message;
 import eu.metraf.safe.safe_chat.model.MessageBuilder;
-import eu.metraf.safe.safe_chat.model.User;
 import eu.metraf.safe.safe_chat.model.UserBuilder;
 import org.junit.After;
 import org.junit.Before;
