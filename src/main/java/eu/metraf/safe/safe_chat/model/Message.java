@@ -1,10 +1,17 @@
 package eu.metraf.safe.safe_chat.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
-
+@Getter
+@Setter
+@ToString(exclude = {"localtime"})
+@Document(collection = "messages")
 public class Message {
   @Id
   @JsonIgnore
@@ -16,7 +23,8 @@ public class Message {
   public Message() {
   }
 
-  public Message(User user, String message, LocalDateTime localtime) {
+  public Message(String id, User user, String message, LocalDateTime localtime) {
+    this.id = id;
     this.user = user;
     this.message = message;
     this.localtime = localtime;

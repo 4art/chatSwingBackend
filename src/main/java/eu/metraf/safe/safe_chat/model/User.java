@@ -1,8 +1,9 @@
 package eu.metraf.safe.safe_chat.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.ToString;
 import org.springframework.data.annotation.Id;
-
+@ToString
 public class User {
   @Id
   @JsonIgnore
@@ -13,7 +14,8 @@ public class User {
   public User() {
   }
 
-  public User(String username, String color) {
+  public User(String id, String username, String color) {
+    this.id = id;
     this.username = username;
     this.color = color;
   }

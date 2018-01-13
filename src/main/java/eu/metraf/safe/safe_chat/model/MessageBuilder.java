@@ -23,6 +23,10 @@ public class MessageBuilder {
   }
 
   public Message build(){
-    return new Message(user, message, localtime);
+    Message message = new Message();
+    message.setUser(user);
+    message.setMessage(this.message);
+    message.setLocaltime(localtime);
+    return message;
   }
 }

@@ -15,6 +15,10 @@ public class UserBuilder {
   }
 
   public User build(){
-    return new User(username, color);
+
+    User user = new User();
+    user.setUsername(username);
+    user.setColor(color);
+    return user;
   }
 }
