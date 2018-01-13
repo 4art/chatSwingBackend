@@ -1,5 +1,7 @@
 package eu.metraf.safe.safe_chat.api;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import eu.metraf.safe.safe_chat.model.*;
 import eu.metraf.safe.safe_chat.repo.MessageRepo;
 import org.junit.After;
@@ -7,12 +9,11 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.embedded.LocalServerPort;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.RestTemplate;
 
@@ -33,10 +34,16 @@ public class ApiControllerTest {
   @Autowired
   private RestTemplate restTemplate;
 
+  @Autowired
+  private ObjectMapper objectMapper;
+
   private List<Message> list = new ArrayList<>();
 
   @LocalServerPort
   private int port;
+
+  @Value("${x-auth-token}")
+  private String token;
 
   @Before
   public void setUp() throws Exception {
@@ -71,7 +78,20 @@ public class ApiControllerTest {
   }
 
   @Test
-  public void setMessage() {
+  public void setMessage() throws JsonProcessingException {
+    ParameterizedTypeReference<Message> reference = new ParameterizedTypeReference<Message>() {
+    };
+    HttpHeaders headers = new HttpHeaders();
+    headers.setContentType(MediaType.APPLICATION_JSON);
+    headers.add("x-auth-token", token);
+    String json = objectMapper.writeValueAsString(list.get(1));
+    final ResponseEntity<Message> messageResponseEntity = restTemplate.exchange(String.format("http://localhost:%d/message", port), HttpMethod.POST, new HttpEntity<>(list.get(1)), reference);
+    assertEquals(messageResponseEntity.getStatusCode(), HttpStatus.OK);
+    final Message message = messageResponseEntity.getBody();
+    assertNotNull(message);
+    assertEquals(list.get(1).getMessage(), message.getMessage());
+    list = Arrays.asList(list.get(0), message);
+    messageRepo.delete(message);
   }
 
   private List<Message> createListMessage() {
