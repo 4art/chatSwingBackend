@@ -14,7 +14,6 @@ import java.time.LocalDateTime;
 @Document(collection = "messages")
 public class Message {
   @Id
-  @JsonIgnore
   private String id;
   private User user;
   private String message;
