@@ -11,3 +11,6 @@ db:
   image: mongo:latest
   ports:
     - "27017:27017"
+networks:
+    default:
+        driver: custom-driver-1
