@@ -3,9 +3,13 @@ server:
 spring:
   data:
     mongodb:
-#      host: 127.0.0.1
-#      port: 27017
+      host: 127.0.0.1
+      port: 27017
 #      host: 192.168.99.100
 #      port: 28018
       database: safe
 x-auth-token: EzCXxjmQMjxBdQaNHbyiZwoiwrFdnyxXQqKnNywJ3JwL
+service:
+  url:
+    weather: https://d1fuzbayh0.execute-api.eu-central-1.amazonaws.com/prod/weather
+    crypto: http://rest.metraf.eu/prices
