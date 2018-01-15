@@ -10,9 +10,14 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -50,11 +55,11 @@ public class ApiController {
                                             HttpServletRequest httpServletRequest,
                                             @Value("${x-auth-token}") String token) {
     if (httpServletRequest.getHeader("x-auth-token") != null && httpServletRequest.getHeader("x-auth-token").equals(token)) {
-
+      message.setLocaltime(LocalDateTime.now(ZoneId.of("Europe/Paris")));
       final Message savedMessage = messageRepo.save(message);
 
       final Optional<Message> messageOptional = botService.askBot(message);
-      if(messageOptional.isPresent()){
+      if (messageOptional.isPresent()) {
         messageRepo.save(messageOptional.get());
       }
 
