@@ -3,16 +3,16 @@ package eu.metraf.safe.safe_chat.api;
 import eu.metraf.safe.safe_chat.model.Health;
 import eu.metraf.safe.safe_chat.model.Message;
 import eu.metraf.safe.safe_chat.repo.MessageRepo;
+import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -29,15 +29,27 @@ public class ApiController {
   }
 
   @RequestMapping(value = "/message", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-  public ResponseEntity<List<Message>> getMessages() {
-    List<Message> messages = messageRepo.findAll();
-    return new ResponseEntity<>(messages, HttpStatus.OK);
+  public ResponseEntity<List<Message>> getMessages(HttpServletRequest httpServletRequest,
+                                                   @Value("${x-auth-token}") String token) {
+    if (httpServletRequest.getHeader("x-auth-token") != null && httpServletRequest.getHeader("x-auth-token").equals(token)) {
+
+      List<Message> messages = messageRepo.findAll();
+      return new ResponseEntity<>(messages, HttpStatus.OK);
+    }
+    return new ResponseEntity<>(new ArrayList<Message>(), HttpStatus.UNAUTHORIZED);
+
   }
 
   @RequestMapping(value = "/message", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-  public ResponseEntity<Message> setMessage(@Valid @RequestBody Message message) {
-    Message savedMessage = messageRepo.save(message);
-    return new ResponseEntity<>(savedMessage, HttpStatus.OK);
+  public ResponseEntity<Message> setMessage(@Valid @RequestBody Message message,
+                                            HttpServletRequest httpServletRequest,
+                                            @Value("${x-auth-token}") String token) {
+    if (httpServletRequest.getHeader("x-auth-token") != null && httpServletRequest.getHeader("x-auth-token").equals(token)) {
+
+      Message savedMessage = messageRepo.save(message);
+      return new ResponseEntity<>(savedMessage, HttpStatus.OK);
+    }
+    return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
   }
 
 }

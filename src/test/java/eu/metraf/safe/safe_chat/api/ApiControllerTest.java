@@ -70,22 +70,36 @@ public class ApiControllerTest {
     messageRepo.save(list.get(1));
     ParameterizedTypeReference<List<Message>> listParameterizedTypeReference = new ParameterizedTypeReference<List<Message>>() {
     };
-    final ResponseEntity<List<Message>> listResponseEntity = restTemplate.exchange(String.format("http://localhost:%d/message", port), HttpMethod.GET, null, listParameterizedTypeReference);
+    final ResponseEntity<List<Message>> listResponseEntity = restTemplate.exchange(String.format("http://localhost:%d/message", port), HttpMethod.GET, new HttpEntity<>(getHeaders(false)), listParameterizedTypeReference);
     assertEquals(listResponseEntity.getStatusCode(), HttpStatus.OK);
     List<Message> messages = listResponseEntity.getBody();
     assertNotNull(messages);
     assertTrue(messages.size() >= 2);
   }
 
+//  @Test
+//  public void getMessageNoToken(){
+//    ParameterizedTypeReference<List<Message>> listParameterizedTypeReference = new ParameterizedTypeReference<List<Message>>() {
+//    };
+//    final ResponseEntity<List<Message>> listResponseEntity = restTemplate.exchange(String.format("http://localhost:%d/message", port), HttpMethod.GET, null, listParameterizedTypeReference);
+//    assertEquals(listResponseEntity.getStatusCode(), HttpStatus.UNAUTHORIZED);
+//  }
+//
+//  @Test
+//  public void getMessageInvalidToken(){
+//    ParameterizedTypeReference<List<Message>> listParameterizedTypeReference = new ParameterizedTypeReference<List<Message>>() {
+//    };
+//    final ResponseEntity<List<Message>> listResponseEntity = restTemplate.exchange(String.format("http://localhost:%d/message", port), HttpMethod.GET, new HttpEntity<>(getHeaders(true)), listParameterizedTypeReference);
+//    assertEquals(listResponseEntity.getStatusCode(), HttpStatus.UNAUTHORIZED);
+//  }
+
   @Test
   public void setMessage() throws JsonProcessingException {
     ParameterizedTypeReference<Message> reference = new ParameterizedTypeReference<Message>() {
     };
-    HttpHeaders headers = new HttpHeaders();
-    headers.setContentType(MediaType.APPLICATION_JSON);
-    headers.add("x-auth-token", token);
+    HttpHeaders headers = getHeaders(false);
     String json = objectMapper.writeValueAsString(list.get(1));
-    final ResponseEntity<Message> messageResponseEntity = restTemplate.exchange(String.format("http://localhost:%d/message", port), HttpMethod.POST, new HttpEntity<>(list.get(1)), reference);
+    final ResponseEntity<Message> messageResponseEntity = restTemplate.exchange(String.format("http://localhost:%d/message", port), HttpMethod.POST, new HttpEntity<>(list.get(1), headers), reference);
     assertEquals(messageResponseEntity.getStatusCode(), HttpStatus.OK);
     final Message message = messageResponseEntity.getBody();
     assertNotNull(message);
@@ -112,5 +126,17 @@ public class ApiControllerTest {
             .withLocaltime(LocalDateTime.now())
             .withUser(user)
             .build());
+  }
+
+  private HttpHeaders getHeaders(boolean invalidToken){
+    HttpHeaders headers = new HttpHeaders();
+    headers.setContentType(MediaType.APPLICATION_JSON);
+    if (invalidToken){
+      headers.add("x-auth-token", "qwertyblabla");
+    }
+    else {
+      headers.add("x-auth-token", token);
+    }
+    return headers;
   }
 }
