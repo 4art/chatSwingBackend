@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -104,7 +105,7 @@ public class BotServiceImpl implements BotService {
   private Message getMessageFromBot(String message) {
     return new MessageBuilder()
         .withMessage(message)
-        .withLocaltime(LocalDateTime.now())
+        .withLocaltime(LocalDateTime.now(ZoneId.of("Europe/Paris")))
         .withUser(new UserBuilder()
             .withUsername(botName)
             .withColor("green")
