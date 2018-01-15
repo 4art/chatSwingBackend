@@ -7,14 +7,19 @@ services:
       ports:
         - "80:8080"
       links:
-        - db:mongo
-    db:
+        - mongo
+      networks:
+        vpcbr:
+          ipv4_address: 10.5.0.6
+        depends_on:
+          - mongo
+    mongo:
       image: mongo
       ports:
         - "27017:27017"
       networks:
-            vpcbr:
-              ipv4_address: 10.5.0.5
+        vpcbr:
+        ipv4_address: 10.5.0.5
 networks:
   vpcbr:
     driver: bridge
