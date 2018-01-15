@@ -38,7 +38,7 @@ public class ApiController {
                                                    @Value("${x-auth-token}") String token) {
     if (httpServletRequest.getHeader("x-auth-token") != null && httpServletRequest.getHeader("x-auth-token").equals(token)) {
 
-      final List<Message> messages = messageRepo.findAll();
+      final List<Message> messages = messageRepo.findTop50ByOrderByLocaltimeDesc();
       return new ResponseEntity<>(messages, HttpStatus.OK);
     }
     return new ResponseEntity<>(new ArrayList<Message>(), HttpStatus.UNAUTHORIZED);
