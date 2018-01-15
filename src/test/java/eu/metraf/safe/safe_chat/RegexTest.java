@@ -22,6 +22,7 @@ public class RegexTest {
     matches.put("hello", "\\!hello");
     matches.put("crypto", "\\!crypto\\.([^.]+)");
     matches.put("weather", "\\!weather\\.([^.]+)");
+    matches.put("weatherDefault", "\\!weather");
 
   }
 
@@ -40,10 +41,19 @@ public class RegexTest {
   }
 
   @Test
+  public void weatherDefaultTest(){
+    String info = "!weather";
+    assertTrue(info.matches(matches.get("weatherDefault")));
+    assertEquals(findMatch(info), "weatherDefault");
+  }
+
+  @Test
   public void cryptoTest(){
     String info = "!crypto.bitcoin";
     assertTrue(info.matches(matches.get("crypto")));
     assertEquals(findMatch(info), "crypto");
+    String[] s = info.split("\\.");
+    assertEquals(s[1], "bitcoin");
   }
 
   @Test
@@ -51,6 +61,8 @@ public class RegexTest {
     String info = "!weather.la";
     assertTrue(info.matches(matches.get("weather")));
     assertEquals(findMatch(info), "weather");
+    String[] s = info.split("\\.");
+    assertEquals(s[1], "la");
   }
 
 
