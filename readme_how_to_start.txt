@@ -15,6 +15,12 @@ Simplest way:
         if you get {success: true} everything is works
     Ubuntu:
         https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-ubuntu-16-04
+Complicated way:
+    you need to install MongoDB, maven
+    change src/main/resources/application.yml to configuration of your database
+    mvn clean package
+    java -jar target/safe_chat-0.0.1-SNAPSHOT.jar
+    and maybe it will work :)
 
 If you don't want something to install you can also use VPS with installed software for example Digital Ocean
     Web site: https://www.digitalocean.com/
