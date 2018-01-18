@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="2080.892013888889" y="940.0">eu.metraf.safe.safe_chat.service.CryptoPriceServiceImpl</node>
+    <node x="1109.0795138888889" y="0.0">eu.metraf.safe.safe_chat.model.User</node>
+    <node x="1827.0795138888886" y="145.0">eu.metraf.safe.safe_chat.model.CryptoPrice</node>
+    <node x="39.20798611111104" y="652.5">eu.metraf.safe.safe_chat.model.Health</node>
+    <node x="1739.3920138888889" y="928.5">eu.metraf.safe.safe_chat.service.WeatherSerciveImpl</node>
+    <node x="731.0795138888889" y="277.0">eu.metraf.safe.safe_chat.model.Message</node>
+    <node x="950.207986111111" y="586.0">eu.metraf.safe.safe_chat.model.MessageBuilder</node>
+    <node x="1149.707986111111" y="830.0">eu.metraf.safe.safe_chat.service.BotServiceImpl</node>
+    <node x="1783.9624999999999" y="652.5">eu.metraf.safe.safe_chat.service.CryptoPriceService</node>
+    <node x="1451.9624999999999" y="641.0">eu.metraf.safe.safe_chat.service.WeatherService</node>
+    <node x="215.20798611111104" y="652.5">eu.metraf.safe.safe_chat.repo.MessageRepo</node>
+    <node x="1191.707986111111" y="265.5">eu.metraf.safe.safe_chat.model.UserBuilder</node>
+    <node x="1506.9772569444444" y="211.0">eu.metraf.safe.safe_chat.model.Weather</node>
+    <node x="0.0" y="918.0">eu.metraf.safe.safe_chat.api.ApiController</node>
+    <node x="628.207986111111" y="652.5">eu.metraf.safe.safe_chat.service.BotService</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="eu.metraf.safe.safe_chat.service.BotServiceImpl" target="eu.metraf.safe.safe_chat.service.CryptoPriceService">
+      <point x="163.625" y="-158.0" />
+      <point x="1500.332986111111" y="810.0" />
+      <point x="1871.7124999999999" y="810.0" />
+      <point x="-87.75" y="25.5" />
+    </edge>
+    <edge source="eu.metraf.safe.safe_chat.service.CryptoPriceServiceImpl" target="eu.metraf.safe.safe_chat.model.CryptoPrice">
+      <point x="87.75" y="-48.0" />
+      <point x="2344.142013888889" y="810.0" />
+      <point x="2283.893923611111" y="810.0" />
+      <point x="2283.893923611111" y="566.0" />
+      <point x="2011.2461805555554" y="566.0" />
+      <point x="73.66666666666674" y="190.5" />
+    </edge>
+    <edge source="eu.metraf.safe.safe_chat.service.BotServiceImpl" target="eu.metraf.safe.safe_chat.model.Weather">
+      <point x="23.375" y="-158.0" />
+      <point x="1360.082986111111" y="810.0" />
+      <point x="1380.3295138888889" y="810.0" />
+      <point x="1380.3295138888889" y="556.0" />
+      <point x="1535.310590277778" y="556.0" />
+      <point x="-56.66666666666674" y="124.5" />
+    </edge>
+    <edge source="eu.metraf.safe.safe_chat.service.BotServiceImpl" target="eu.metraf.safe.safe_chat.model.MessageBuilder">
+      <point x="-70.125" y="-158.0" />
+      <point x="1266.582986111111" y="790.0" />
+      <point x="1126.207986111111" y="790.0" />
+      <point x="0.0" y="92.0" />
+    </edge>
+    <edge source="eu.metraf.safe.safe_chat.service.CryptoPriceService" target="eu.metraf.safe.safe_chat.model.CryptoPrice">
+      <point x="-2.2737367544323206E-13" y="-25.5" />
+      <point x="1959.4624999999996" y="566.0" />
+      <point x="1937.5795138888886" y="566.0" />
+      <point x="0.0" y="190.5" />
+    </edge>
+    <edge source="eu.metraf.safe.safe_chat.model.Message" target="eu.metraf.safe.safe_chat.model.User">
+      <point x="49.75" y="-58.5" />
+      <point x="880.3295138888889" y="125.0" />
+      <point x="1147.3295138888889" y="125.0" />
+      <point x="-38.25" y="47.5" />
+    </edge>
+    <edge source="eu.metraf.safe.safe_chat.service.WeatherSerciveImpl" target="eu.metraf.safe.safe_chat.model.Weather">
+      <point x="77.75" y="-59.5" />
+      <point x="1972.6420138888889" y="790.0" />
+      <point x="1773.4624999999999" y="790.0" />
+      <point x="1773.4624999999999" y="556.0" />
+      <point x="1648.6439236111114" y="556.0" />
+      <point x="56.66666666666674" y="124.5" />
+    </edge>
+    <edge source="eu.metraf.safe.safe_chat.model.UserBuilder" target="eu.metraf.safe.safe_chat.model.User">
+      <point x="-69.75" y="-70.0" />
+      <point x="1261.457986111111" y="125.0" />
+      <point x="1223.8295138888889" y="125.0" />
+      <point x="38.25" y="47.5" />
+    </edge>
+    <edge source="eu.metraf.safe.safe_chat.api.ApiController" target="eu.metraf.safe.safe_chat.model.Health">
+      <point x="-219.20000000000005" y="-70.0" />
+      <point x="54.799999999999955" y="810.0" />
+      <point x="77.95798611111104" y="810.0" />
+      <point x="-38.75" y="25.5" />
+    </edge>
+    <edge source="eu.metraf.safe.safe_chat.api.ApiController" target="eu.metraf.safe.safe_chat.model.Message">
+      <point x="0.0" y="-70.0" />
+      <point x="274.0" y="810.0" />
+      <point x="204.70798611111104" y="810.0" />
+      <point x="204.70798611111104" y="546.0" />
+      <point x="747.6628472222222" y="546.0" />
+      <point x="-82.91666666666663" y="58.5" />
+    </edge>
+    <edge source="eu.metraf.safe.safe_chat.repo.MessageRepo" target="eu.metraf.safe.safe_chat.model.Message">
+      <point x="0.0" y="-25.5" />
+      <point x="411.70798611111104" y="556.0" />
+      <point x="780.8295138888889" y="556.0" />
+      <point x="-49.75" y="58.5" />
+    </edge>
+    <edge source="eu.metraf.safe.safe_chat.service.BotServiceImpl" target="eu.metraf.safe.safe_chat.service.BotService">
+      <point x="-163.625" y="-158.0" />
+      <point x="1173.082986111111" y="810.0" />
+      <point x="853.957986111111" y="810.0" />
+      <point x="75.25" y="25.5" />
+    </edge>
+    <edge source="eu.metraf.safe.safe_chat.service.BotServiceImpl" target="eu.metraf.safe.safe_chat.model.Message">
+      <point x="-116.875" y="-158.0" />
+      <point x="1219.832986111111" y="800.0" />
+      <point x="939.707986111111" y="800.0" />
+      <point x="939.707986111111" y="566.0" />
+      <point x="847.1628472222222" y="566.0" />
+      <point x="16.58333333333337" y="58.5" />
+    </edge>
+    <edge source="eu.metraf.safe.safe_chat.model.MessageBuilder" target="eu.metraf.safe.safe_chat.model.Message">
+      <point x="-44.0" y="-92.0" />
+      <point x="1082.207986111111" y="546.0" />
+      <point x="913.4961805555555" y="546.0" />
+      <point x="82.91666666666663" y="58.5" />
+    </edge>
+    <edge source="eu.metraf.safe.safe_chat.service.BotServiceImpl" target="eu.metraf.safe.safe_chat.model.UserBuilder">
+      <point x="-23.375" y="-158.0" />
+      <point x="1313.332986111111" y="810.0" />
+      <point x="1331.207986111111" y="810.0" />
+      <point x="0.0" y="70.0" />
+    </edge>
+    <edge source="eu.metraf.safe.safe_chat.service.CryptoPriceServiceImpl" target="eu.metraf.safe.safe_chat.service.CryptoPriceService">
+      <point x="-87.75" y="-48.0" />
+      <point x="2168.642013888889" y="810.0" />
+      <point x="2047.2124999999999" y="810.0" />
+      <point x="87.75" y="25.5" />
+    </edge>
+    <edge source="eu.metraf.safe.safe_chat.service.BotService" target="eu.metraf.safe.safe_chat.model.Message">
+      <point x="0.0" y="-25.5" />
+      <point x="778.707986111111" y="566.0" />
+      <point x="813.9961805555555" y="566.0" />
+      <point x="-16.58333333333337" y="58.5" />
+    </edge>
+    <edge source="eu.metraf.safe.safe_chat.model.MessageBuilder" target="eu.metraf.safe.safe_chat.model.User">
+      <point x="44.0" y="-92.0" />
+      <point x="1170.207986111111" y="125.0" />
+      <point x="1172.8295138888889" y="125.0" />
+      <point x="-12.75" y="47.5" />
+    </edge>
+    <edge source="eu.metraf.safe.safe_chat.service.BotServiceImpl" target="eu.metraf.safe.safe_chat.model.CryptoPrice">
+      <point x="70.125" y="-158.0" />
+      <point x="1406.832986111111" y="810.0" />
+      <point x="1413.2124999999999" y="810.0" />
+      <point x="1413.2124999999999" y="566.0" />
+      <point x="1863.912847222222" y="566.0" />
+      <point x="-73.66666666666674" y="190.5" />
+    </edge>
+    <edge source="eu.metraf.safe.safe_chat.service.BotServiceImpl" target="eu.metraf.safe.safe_chat.service.WeatherService">
+      <point x="116.875" y="-158.0" />
+      <point x="1453.582986111111" y="800.0" />
+      <point x="1529.7124999999999" y="800.0" />
+      <point x="-77.75" y="37.0" />
+    </edge>
+    <edge source="eu.metraf.safe.safe_chat.api.ApiController" target="eu.metraf.safe.safe_chat.service.BotService">
+      <point x="219.2" y="-70.0" />
+      <point x="493.20000000000005" y="810.0" />
+      <point x="703.457986111111" y="810.0" />
+      <point x="-75.25" y="25.5" />
+    </edge>
+    <edge source="eu.metraf.safe.safe_chat.service.WeatherService" target="eu.metraf.safe.safe_chat.model.Weather">
+      <point x="0.0" y="-37.0" />
+      <point x="1607.4624999999999" y="556.0" />
+      <point x="1591.9772569444444" y="556.0" />
+      <point x="0.0" y="124.5" />
+    </edge>
+    <edge source="eu.metraf.safe.safe_chat.service.WeatherSerciveImpl" target="eu.metraf.safe.safe_chat.service.WeatherService">
+      <point x="-77.75" y="-59.5" />
+      <point x="1817.1420138888889" y="800.0" />
+      <point x="1685.2124999999999" y="800.0" />
+      <point x="77.75" y="37.0" />
+    </edge>
+    <edge source="eu.metraf.safe.safe_chat.api.ApiController" target="eu.metraf.safe.safe_chat.repo.MessageRepo">
+      <point x="109.60000000000002" y="-70.0" />
+      <point x="383.6" y="810.0" />
+      <point x="411.70798611111104" y="810.0" />
+      <point x="0.0" y="25.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="582.0" y="185.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
