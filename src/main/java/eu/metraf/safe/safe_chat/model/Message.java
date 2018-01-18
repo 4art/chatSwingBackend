@@ -1,63 +1,57 @@
 package eu.metraf.safe.safe_chat.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
-@Getter
-@Setter
-@ToString(exclude = {"localtime"})
+
 @Document(collection = "messages")
 public class Message {
-  @Id
-  private String id;
-  private User user;
-  private String message;
-  private LocalDateTime localtime;
+    @Id
+    private String id;
+    private User user;
+    private String message;
+    private LocalDateTime localtime;
 
-  public Message() {
-  }
+    public Message() {
+    }
 
-  public Message(String id, User user, String message, LocalDateTime localtime) {
-    this.id = id;
-    this.user = user;
-    this.message = message;
-    this.localtime = localtime;
-  }
+    public Message(String id, User user, String message, LocalDateTime localtime) {
+        this.id = id;
+        this.user = user;
+        this.message = message;
+        this.localtime = localtime;
+    }
 
-  public String getId() {
-    return id;
-  }
+    public String getId() {
+        return id;
+    }
 
-  public void setId(String id) {
-    this.id = id;
-  }
+    public void setId(String id) {
+        this.id = id;
+    }
 
-  public User getUser() {
-    return user;
-  }
+    public User getUser() {
+        return user;
+    }
 
-  public void setUser(User user) {
-    this.user = user;
-  }
+    public void setUser(User user) {
+        this.user = user;
+    }
 
-  public String getMessage() {
-    return message;
-  }
+    public String getMessage() {
+        return message;
+    }
 
-  public void setMessage(String message) {
-    this.message = message;
-  }
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
-  public LocalDateTime getLocaltime() {
-    return localtime;
-  }
+    public LocalDateTime getLocaltime() {
+        return localtime;
+    }
 
-  public void setLocaltime(LocalDateTime localtime) {
-    this.localtime = localtime;
-  }
+    public void setLocaltime(LocalDateTime localtime) {
+        this.localtime = localtime;
+    }
 }
