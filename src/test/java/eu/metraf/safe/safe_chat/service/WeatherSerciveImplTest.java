@@ -1,6 +1,7 @@
 package eu.metraf.safe.safe_chat.service;
 
 import eu.metraf.safe.safe_chat.model.Weather;
+import eu.metraf.safe.safe_chat.testSettings.IntegrationJUnit;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +13,7 @@ import java.util.Optional;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@RunWith(SpringRunner.class)
-public class WeatherSerciveImplTest {
+public class WeatherSerciveImplTest extends IntegrationJUnit{
 
   @Autowired
   private WeatherService weatherService;

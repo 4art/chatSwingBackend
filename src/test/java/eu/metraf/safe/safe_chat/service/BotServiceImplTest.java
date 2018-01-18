@@ -3,6 +3,7 @@ package eu.metraf.safe.safe_chat.service;
 import eu.metraf.safe.safe_chat.model.Message;
 import eu.metraf.safe.safe_chat.model.MessageBuilder;
 import eu.metraf.safe.safe_chat.model.UserBuilder;
+import eu.metraf.safe.safe_chat.testSettings.IntegrationJUnit;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,14 +16,10 @@ import java.util.Optional;
 
 import static org.junit.Assert.*;
 
-@SpringBootTest
-@RunWith(SpringRunner.class)
-public class BotServiceImplTest {
+public class BotServiceImplTest extends IntegrationJUnit{
 
   @Autowired
   private BotService botService;
-
-  private Message message;
 
   @Before
   public void initMessage(){

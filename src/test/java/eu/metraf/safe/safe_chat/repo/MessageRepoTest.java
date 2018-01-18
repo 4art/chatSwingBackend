@@ -3,6 +3,7 @@ package eu.metraf.safe.safe_chat.repo;
 import eu.metraf.safe.safe_chat.model.Message;
 import eu.metraf.safe.safe_chat.model.MessageBuilder;
 import eu.metraf.safe.safe_chat.model.UserBuilder;
+import eu.metraf.safe.safe_chat.testSettings.IntegrationJUnit;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,13 +18,10 @@ import java.util.List;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 
-@SpringBootTest
-@RunWith(SpringRunner.class)
-public class MessageRepoTest {
+public class MessageRepoTest extends IntegrationJUnit{
 
   @Autowired
   private MessageRepo messageRepo;
-  private Message message;
 
   @Before
   public void createMessage() {

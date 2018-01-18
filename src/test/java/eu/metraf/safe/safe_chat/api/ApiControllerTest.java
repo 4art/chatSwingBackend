@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import eu.metraf.safe.safe_chat.model.*;
 import eu.metraf.safe.safe_chat.repo.MessageRepo;
+import eu.metraf.safe.safe_chat.testSettings.IntegrationJUnit;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,9 +25,7 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@RunWith(SpringRunner.class)
-public class ApiControllerTest {
+public class ApiControllerTest extends IntegrationJUnit{
 
   @Autowired
   private MessageRepo messageRepo;
