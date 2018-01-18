@@ -18,14 +18,16 @@ Simplest way:
 
 If you don't want something to install you can also use VPS with installed software for example Digital Ocean
     Web site: https://www.digitalocean.com/
-    promo code for 10€: radio_t
-    start droplet:
+    promo code for 10$: radio_t
+    create droplet:
         Distributions: Ubuntu 16.04
         One-click apps: choose docker
     Choose a size: 1 GB 1 vCPU 25 GB 1 TB
     Choose a datacenter region: Frankfurt
 
     and create it
-    on this server you can clone the application with `git clone https://github.com/4art/chatSwingBackend.git`
+    after you go to the server with ssh you can clone the application with `git clone https://github.com/4art/chatSwingBackend.git`
     cd chatSwingBackend/
     docker-compose up -d
+
+see you on the exam :)
